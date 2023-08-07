@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List Courses</title>
+</head>
+<body>
+    <h1>List of Courses</h1>
+    <ul>
+        {% for course in courses %}
+            <li>
+                <strong>Name:</strong> {{ course.name }}<br>
+                <strong>Duration:</strong> {{ course.duration }}<br>
+                <strong>Category:</strong>
+                <ul>
+                    {% for category in course.category %}
+                        <li>
+                            <input type="checkbox" disabled {% if category in course.category %}checked{% endif %}>
+                            {{ category }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="{{ url_for('courseAPI.create') }}">
+        <button>Add New Course</button>
+    </a>
+</body>
+</html>

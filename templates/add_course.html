@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Course</title>
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            width: 100%; /* Adjust the width if necessary */
+            top: 100%; /* Position the dropdown below the input box */
+            left: 0; /* Align the dropdown with the left side of the input box */
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+        .dropdown input[type="checkbox"] {
+            display: inline-block;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Course</h1>
+    <form method="post">
+        <label for="category">Category:</label>
+        <div class="dropdown">
+            <div id="courseDropdown" class="dropdown-content">
+                <label><input type="checkbox" name="category[]" value="ui/ux">UI/UX</label><br>
+                <label><input type="checkbox" name="category[]" value="dev">Dev</label><br>
+                <label><input type="checkbox" name="category[]" value="devops">DevOps</label><br>
+                <label><input type="checkbox" name="category[]" value="management">Project Management</label><br>
+            </div>
+            <input type="text" placeholder="category" readonly onclick="toggleDropdown()">
+        </div>
+        <br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <br>
+        <label for="duration">Duration:</label>
+        <input type="text" id="duration" name="duration">
+        <br>
+        <button type="submit">Add Course</button>
+    </form>
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById("courseDropdown");
+            if (dropdown.style.display === "block") {
+                dropdown.style.display = "none";
+            } else {
+                dropdown.style.display = "block";
+            }
+        }
+    </script>    
+</body>
+</html>
